@@ -59,12 +59,18 @@ metric's definition or a tool's contract is unclear.
 - `get_inventory` — stock / days-of-cover for eligibility + EXCLUDE.
 
 ### BUILD (writes → tasks pipeline; rules paused)
-- `create_campaign` — SP auto (HVA-1), SP manual (HVA-2), SB video (HVA-4), SD remarketing (HVA-5).
-- `create_ad_group` / `create_keyword` / `create_target` / `create_product_ad` — structure the
-  manual campaigns (1 ASIN/ad group, EXACT keywords at median bids). Parents by handle OR name.
+- `create_campaign` — the **one-flow** builder for a NEW campaign (SP auto HVA-1, SP manual HVA-2,
+  SB video HVA-4, SD remarketing HVA-5): a single approved task creates the **whole** campaign —
+  campaign + ad group + product ad + keyword/product targets + bidding + placement. Locked defaults:
+  **up-and-down + 100% top-of-search**. Supply the product, the EXACT keywords, and the ad-group
+  default bid (= the **theme-based bid-suggestion median**, see hva-framework HVA-2); it asks
+  (`needs_input`) for anything missing.
+- `create_ad_group` / `create_keyword` / `create_target` / `create_product_ad` — for **adding to /
+  editing an EXISTING** campaign, NOT a brand-new one (that's `create_campaign`'s one flow). Parents
+  by handle OR name.
 - `create_automation_rule` — the OOB rule (type=budget), **paused**.
 - `add_negative` — wasted-term negatives. `harvest_keyword` — converters → EXACT.
-- `adjust_budget` / `adjust_bid` — reallocation / bid tuning within the ±25% band.
+- `adjust_budget` / `adjust_bid` — reallocation / bid tuning (optimization) — not the new-campaign path.
 - `pause_entity` — stop EXCLUDE-ASIN spend.
 - `execute_tasks` — run approved tasks (**dry_run=true first**).
 

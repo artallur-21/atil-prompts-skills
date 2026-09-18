@@ -50,8 +50,19 @@ Take the **top 2 ASINs by sales** (must be ELIGIBLE). For **each**, create a sin
 campaign: **1 ASIN, 1 ad group, daily budget ₹350, target ~70% budget utilization**. Keywords: pull
 the ASIN's **Search Query Performance (SQP)** report; pick the **top 10 queries with high purchase
 volume where the ASIN's price is aligned** to that query's market; **verify each is relevant to the
-product** (thumb rule) and drop the rest. **EXACT** match; bids = suggested **median** (band
-median×0.75 … median×1.25).
+product** (thumb rule) and drop the rest. **EXACT** match.
+
+**Bids = the Amazon theme-based bid-suggestion MEDIAN, by default.** Price every keyword with Amazon's
+theme-based bid suggestions (`POST /sp/targets/bid/recommendations`, media type
+`application/vnd.spthemebasedbidrecommendation.v4+json` — the successor to the deprecating suggestedBid
+service): each keyword returns a **low / median / high** triplet; take the **median** as the bid and
+keep low/high as its range. Theme-based needs **≥ 5 keywords per ad group**; where it returns no price
+(fewer than 5 keywords, or a thin-history ASIN) **fall back to the discovery suggested median ±25%** so
+no keyword is dropped. (The `impactMetrics` — projected clicks/orders — are often absent on thin-history
+ASINs, so we do **not** depend on them for the default bid.)
+
+**Locked campaign defaults:** every Elevate campaign is built with **dynamic bids — up-and-down** and
+**100% top-of-search** placement.
 
 ### HVA-3 · OUT-OF-BUDGET RULE (SP + SB + SD) — created PAUSED
 Rule: over the **last 7 days**, compute each campaign's **ROAS from its cost**. For any campaign with

@@ -9,11 +9,15 @@ rows (pending) and automation rules (paused) — never free-text. Present, dry-r
 
 1. **HVA-1 · SP AUTO** — one Sponsored Products **Automatic** campaign over the top-GMS **eligible +
    unadvertised** ASINs. Target ROAS ≥ 3.5. Purpose tag: "discovery — harvest new converting terms".
-   Tool: `create_campaign` (SP, targetingType=auto). ⚠️ ACTIVE on approval → spends immediately.
+   Tool: `create_campaign` (SP, targetingType=auto) — **one flow** (campaign + ad group + product ad
+   in one approved task; up-and-down + 100% ToS defaults). ⚠️ ACTIVE on approval → spends immediately.
 2. **HVA-2 · SP MANUAL EXACT ×2** — for each of the top-2-by-sales **eligible** ASINs: SP **Manual**,
-   1 ASIN, 1 ad group, **₹350/day**, ~70% utilization target, **EXACT** match. Keywords = the top-10
-   **price-aligned + relevance-checked** SQP queries from ANALYZE list A; bids = suggested **median**
-   (band ×0.75…×1.25). Tools: `create_campaign` → `create_keyword` (or the campaign builder flow).
+   1 ASIN, 1 ad group, **₹350/day**, ~70% utilization target, **EXACT** match, **up-and-down bidding +
+   100% top-of-search** (locked defaults). Keywords = the top-10 **price-aligned + relevance-checked**
+   SQP queries from ANALYZE list A; **bids = the Amazon theme-based bid-suggestion median** per keyword
+   (fallback: discovery suggested ±25% when theme-based has no price — needs ≥ 5 keywords/ad group).
+   **One approved `create_campaign` task builds the whole campaign** — ad group + product ad + EXACT
+   keyword targets — no manual chaining of `create_ad_group`/`create_keyword` for a new campaign.
    ⚠️ ACTIVE on approval.
 3. **HVA-3 · OOB RULE** — `create_automation_rule` (type=budget), **created PAUSED**: over last 7d,
    ROAS-from-cost > 3.5 → keep OOB < 20% by raising/protecting daily budget within a cap, daily
@@ -44,6 +48,12 @@ Then: offer **Approve all / by group / by number**. Execute via `execute_tasks` 
 `/intelligence/tasks/bulk-execute`) with **dry_run=true first**; show the dry-run summary; go live
 only on an explicit "go live". Sequence: negatives → bid/budget → new campaigns → rules-enable last.
 Capture rejected items as `status='rejected'`.
+
+**Engineer pre-flight (server-side).** The platform's deterministic Elevate planner assembles the
+HVA-1/HVA-2 campaigns and prices the theme-based-median bids. To see the exact Amazon Ads v1 payload
+(campaign + ad group + product ad + keyword bids) and the budget headroom for one account **without
+writing anything**, run `php artisan elevate:dry-run-campaign --profile=<profile_id>` (dry-run;
+optional `--asin=`). Use it to validate a build before the operator approves it live.
 
 ## Guardrails (load this section on any push-back)
 
