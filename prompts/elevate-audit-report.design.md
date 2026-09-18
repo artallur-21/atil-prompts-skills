@@ -1,7 +1,7 @@
 # Elevate — Audit & Action Plan page (Claude Design agent brief)
 
 Paste into the Claude Design agent (claude.ai/design) to build the client-facing audit + action-plan
-page. Sample data is illustrative (fictional "InnoWays") — never paste a real client's private figures.
+page. Sample data is illustrative (fictional "HearthNest") — never paste a real client's private figures.
 Framework values must match `skills/elevate-manager/references/hva-framework.md`.
 
 ---
@@ -16,7 +16,7 @@ system (green ✅ on-track, amber ⚠️ at-risk, red ❌ off-track, separate fr
 hierarchy, tabular numerals. Long-scroll with sticky section nav; responsive to mobile.
 
 ### 1. HEADER / READINESS HERO
-- "InnoWays" · Amazon.in · Home & Kitchen · "Amazon Elevate" badge · "Day 22 of 60 · 38 days left".
+- "HearthNest" · Amazon.in · Home & Kitchen · "Amazon Elevate" badge · "Day 22 of 60 · 38 days left".
 - Elevate Score dial: 2 / 5 HVAs with subtitle "Pass = 3/5 · Goal = 5/5" (amber).
 - Four OUTPUT-HVA tiles vs PRE-ELEVATE baseline: GMS +6% (target +10%) ⚠️ · Ad spend ₹41,200/mo
   (min ₹7,500 ✅, +8% MoM vs target +15% ⚠️) · TACoS 8.2% (target ≥10%) ⚠️ · ROAS 4.1 (target >3.5) ✅.
@@ -68,7 +68,7 @@ outcome in money with assumptions. CTAs: "Approve plan" (primary), "Download rep
 ## INTERACTIONS & DATA
 Sticky scroll-spy nav; task cards expand to the numbers + risk; status toggle Proposed→Approved (the
 "spends immediately" flag stays on builds, the PAUSED badge stays on rules); live days-left + score dial.
-Use the sample above as ONE illustrative Elevate seller (fictional "InnoWays" — not a real client's
+Use the sample above as ONE illustrative Elevate seller (fictional "HearthNest" — not a real client's
 figures). Model clean typed data: account, outputHVAs[], inputHVAs[5], eligibility[], gaps, budget[],
 marketKeywords{aligned[], misfit[]}, tasks grouped by lane — so components are real and reusable.
 ```
