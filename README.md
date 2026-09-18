@@ -4,8 +4,9 @@ Private, version-controlled home for ATIL / ScaleSKUs **prompts** and **AI skill
 assets our team runs on **Claude** and **ChatGPT** against the ScaleSKUs MCP. Managed by us; updated
 via pull requests.
 
-> Private repo. Internal only. Nothing here writes to Amazon directly — skills propose into the
-> platform's human-gated tasks pipeline.
+> Public repo — any ATIL employee can clone/download with **no GitHub login**. It holds internal
+> tooling only: **no secrets, credentials, or client data** live here (sample data is fictional).
+> Nothing here writes to Amazon directly — skills propose into the platform's human-gated tasks pipeline.
 
 ## Layout
 
@@ -23,7 +24,8 @@ prompts/    # standalone prompts you paste into an LLM
 your personal skills dir so it's available in every project and never committed to a product repo:
 
 ```bash
-git clone git@github.com:artallur-21/atil-prompts-skills.git ~/Projects/atil-prompts-skills
+# public repo — no login needed
+git clone https://github.com/artallur-21/atil-prompts-skills.git ~/Projects/atil-prompts-skills
 ln -s ~/Projects/atil-prompts-skills/skills/elevate-manager ~/.claude/skills/elevate-manager
 # (symlink = it auto-updates on `git pull`; use `cp -R` instead if you prefer a fixed copy)
 ```
