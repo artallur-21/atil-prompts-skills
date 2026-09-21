@@ -1,0 +1,21 @@
+{
+  "name": "atil",
+  "owner": {
+    "name": "ATIL / ScaleSKUs",
+    "email": "ceo@atil.ltd"
+  },
+  "metadata": {
+    "description": "ATIL / ScaleSKUs managed AI skills for the ScaleSKUs MCP.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "elevate-manager",
+      "source": "./",
+      "description": "Amazon Elevate cohort manager — EVALUATE → ANALYZE → BUILD + cohort TRACK, run on Claude against the ScaleSKUs MCP. Proposes tasks (never writes to Amazon directly).",
+      "version": "1.0.0",
+      "category": "ppc",
+      "author": { "name": "ATIL / ScaleSKUs", "email": "ceo@atil.ltd" }
+    }
+  ]
+}

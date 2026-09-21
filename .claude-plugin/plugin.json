@@ -1,0 +1,8 @@
+{
+  "name": "elevate-manager",
+  "version": "1.0.0",
+  "description": "Amazon Elevate cohort manager for the ScaleSKUs MCP — EVALUATE → ANALYZE → BUILD + cohort TRACK. Bundles the elevate-manager skill; proposes tasks/paused rules, never writes to Amazon directly.",
+  "author": { "name": "ATIL / ScaleSKUs", "email": "ceo@atil.ltd" },
+  "homepage": "https://github.com/artallur-21/atil-prompts-skills",
+  "keywords": ["amazon-ads", "elevate", "scaleskus", "mcp", "ppc"]
+}
