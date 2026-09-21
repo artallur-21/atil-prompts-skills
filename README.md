@@ -20,6 +20,25 @@ prompts/    # standalone prompts you paste into an LLM
 
 ## Install a skill
 
+### Best for teams — install as a plugin (one command, any account)
+
+This repo is a **Claude Code plugin marketplace**. On each machine, once:
+
+```
+/plugin marketplace add artallur-21/atil-prompts-skills
+/plugin install elevate-manager@atil
+```
+
+That installs the skill (and auto-updates on `/plugin marketplace update atil`) — no
+clone, no symlink, works the same on every employee's account. Confirm with `/plugin`
+or a trigger phrase (`Elevate status`). Requires the ScaleSKUs MCP connected.
+
+> Symlinking a skill folder (below) is **not** reliable — Claude often doesn't discover
+> a symlinked `~/.claude/skills/<name>`. Use the plugin method above, or `cp -R` a real copy.
+
+### Manual (single machine, fallback)
+
+
 **Claude (private / personal — recommended):** clone this repo and symlink (or copy) the skill into
 your personal skills dir so it's available in every project and never committed to a product repo:
 
@@ -48,3 +67,16 @@ paste it into the assistant (Claude or ChatGPT) that's connected to the MCP.
 - Change anything via a PR so updates are reviewed and versioned.
 - Keep the framework values (HVA rules, thresholds) in the skill's `references/hva-framework.md` as
   the single source of truth; prompts should reference the same numbers, not diverge.
+
+## Install across accounts — claude.ai and ChatGPT
+
+- **claude.ai (web):** skills are added under **Settings → Capabilities → Skills**. For a
+  whole team, a **Claude for Work (Team/Enterprise) admin** deploys the skill org-wide from
+  the admin console so every member gets it; individuals otherwise upload the skill folder
+  themselves. (Download a zip of `skills/elevate-manager/` from this repo to upload.)
+- **ChatGPT:** a Custom GPT lives in its creator's account. To share across employees, build
+  it **once inside a ChatGPT Business/Enterprise workspace** and set sharing to *Anyone at
+  <workspace>* — do **not** have each employee rebuild it. Without a shared workspace, a GPT
+  can't be installed across accounts; each user recreates it from `skills/elevate-manager/`
+  (SKILL.md → Instructions, references/*.md → Knowledge) + the ScaleSKUs MCP connector.
+
