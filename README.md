@@ -12,7 +12,8 @@ via pull requests.
 
 ```
 skills/     # installable skills (SKILL.md + references/) — portable Claude + ChatGPT
-  elevate-manager/     # Amazon Elevate cohort manager: EVALUATE → ANALYZE → BUILD + TRACK
+  elevate-manager/               # Amazon Elevate cohort manager: EVALUATE → ANALYZE → BUILD + TRACK
+  subcategory-market-gap-audit/  # Per-account subcategory growth audit → Google Sheet (market cap, share, gap, sources)
 prompts/    # standalone prompts you paste into an LLM
   elevate-task-generator.md        # single-prompt form of the Elevate task/rule generator (MCP)
   elevate-audit-report.design.md   # brief for the Claude Design agent — Elevate audit & action-plan page
